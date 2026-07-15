@@ -2,6 +2,7 @@ import { Space_Grotesk, Inter, Orbitron } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CopyGuard from "@/components/CopyGuard";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
       className={`${spaceGrotesk.variable} ${inter.variable} ${orbitron.variable}`}
     >
       <body>
+        <CopyGuard />
         <Header />
         <main>{children}</main>
         <Footer />
