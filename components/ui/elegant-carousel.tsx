@@ -12,7 +12,7 @@ type PortfolioSlide = {
 };
 
 const ACCENT = "#e4283c";
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 5000;
 
 const slides: PortfolioSlide[] = [
   {
@@ -219,7 +219,7 @@ export default function ElegantCarousel() {
       </div>
 
       {/* Setas */}
-      <div className="!mt-1 flex justify-center gap-3 md:!mt-6">
+      <div className="!mt-5 flex justify-center gap-3 md:!mt-6">
         <button
           onClick={goPrev}
           aria-label="Slide anterior"
