@@ -53,13 +53,15 @@ export default function FillButton({ href = "#", className = "", children, onCli
   return (
     <Tag
       ref={ref}
-      className={`btn__fill ${className}`}
+      className={`btn__fill ${hovered ? "is-hovered" : ""} ${className}`}
       onPointerEnter={(event) => {
         setOriginFromPointer(event);
         setHovered(true);
       }}
       onPointerMove={setOriginFromPointer}
       onPointerLeave={() => setHovered(false)}
+      onPointerUp={() => setHovered(false)}
+      onPointerCancel={() => setHovered(false)}
       whileTap={{ scale: 0.985 }}
       {...tagProps}
     >
