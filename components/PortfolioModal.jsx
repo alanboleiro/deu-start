@@ -42,7 +42,7 @@ export default function PortfolioModal({ open, onClose }) {
             <button
               onClick={onClose}
               aria-label="Fechar portfólio"
-              className="absolute -top-9 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c] md:-top-14"
+              className="absolute -top-5 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c] md:-top-14"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M6 6l12 12M18 6L6 18" />
