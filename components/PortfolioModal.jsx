@@ -24,7 +24,7 @@ export default function PortfolioModal({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/95 !px-6 !pb-3 !pt-16 backdrop-blur-md md:items-center md:!pb-16 md:!pt-24"
+          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/95 !px-6 !pb-3 !pt-24 backdrop-blur-md md:items-center md:!pb-16 md:!pt-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
