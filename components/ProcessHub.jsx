@@ -10,7 +10,7 @@ export default function ProcessHub() {
       <span className="hub__ring hub__ring--d2" />
       <span className="hub__core">
         <Image
-          src="/assets/simbolo-branco.png"
+          src="/assets/simbolo-preto.png"
           alt=""
           width={680}
           height={445}
