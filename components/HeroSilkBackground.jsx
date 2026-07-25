@@ -10,6 +10,15 @@ const FRAME_INTERVAL = 1000 / 30;
 // parecer subir quando o hero é bem mais alto que largo (mobile).
 const WAVE_ASPECT = 0.625;
 const V_DIVISOR = RENDER_WIDTH * WAVE_ASPECT;
+// A malha de ondas é amostrada em pixels de render fixos (RENDER_WIDTH),
+// então o mesmo número de ciclos sempre existe independente da largura real
+// do container. Isso faz o padrão "encolher" (linhas mais próximas, aparecendo
+// demais) em telas estreitas, já que o mesmo range de ondas fica espremido
+// numa largura real bem menor que a do desktop. Reduzimos o scale
+// proporcionalmente à largura real (relativa a uma referência desktop) para
+// manter o tamanho aparente das ondas consistente entre mobile e desktop.
+const DESKTOP_REFERENCE_WIDTH = 1440;
+const MIN_SCALE_RATIO = 0.45;
 
 function noise(x, y) {
   const G = 2.71828;
@@ -28,13 +37,14 @@ export default function HeroSilkBackground() {
     if (!ctx) return;
 
     const speed = 0.02;
-    const scale = 2;
+    const baseScale = 2;
     const noiseIntensity = 0.8;
     let time = 0;
     let rafId;
     let lastDraw = 0;
     let width = RENDER_WIDTH;
     let height = RENDER_WIDTH;
+    let scale = baseScale;
     let imageData = ctx.createImageData(width, height);
 
     const resize = () => {
@@ -47,6 +57,9 @@ export default function HeroSilkBackground() {
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
       imageData = ctx.createImageData(width, height);
+
+      const widthRatio = Math.min(1, rect.width / DESKTOP_REFERENCE_WIDTH);
+      scale = baseScale * Math.max(MIN_SCALE_RATIO, widthRatio);
     };
     resize();
     const resizeObserver = new ResizeObserver(resize);
