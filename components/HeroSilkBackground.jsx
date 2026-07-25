@@ -4,6 +4,12 @@ import { useEffect, useRef } from "react";
 
 const RENDER_WIDTH = 220;
 const FRAME_INTERVAL = 1000 / 30;
+// Fixa a densidade vertical do padrão numa proporção "paisagem" (a mesma do
+// desktop), pra as ondas sempre fluírem na diagonal/lado a lado — em vez de
+// acompanhar o aspect ratio real do container, o que faz o padrão girar e
+// parecer subir quando o hero é bem mais alto que largo (mobile).
+const WAVE_ASPECT = 0.625;
+const V_DIVISOR = RENDER_WIDTH * WAVE_ASPECT;
 
 function noise(x, y) {
   const G = 2.71828;
@@ -53,7 +59,7 @@ export default function HeroSilkBackground() {
       for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
           const u = (x / width) * scale;
-          const v = (y / height) * scale;
+          const v = (y / V_DIVISOR) * scale;
 
           const tex_x = u;
           const tex_y = v + 0.03 * Math.sin(8.0 * tex_x - tOffset);
