@@ -202,8 +202,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   overflow: hidden;
   display: none;
+  background: rgba(10, 10, 10, 0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-dark);
 }
 .nav-mobile a {
   display: block;
