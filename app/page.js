@@ -3,6 +3,7 @@ import Reveal from "@/components/Reveal";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureCard from "@/components/FeatureCard";
 import StepItem from "@/components/StepItem";
+import ProcessHub from "@/components/ProcessHub";
 
 export default function Home() {
   return (
@@ -44,20 +45,23 @@ export default function Home() {
             Do diagnóstico à entrega
           </Reveal>
 
-          <ol className="steps">
-            <StepItem num="1" title="Diagnóstico" delay={0}>
-              Entendo o que trava seu negócio hoje: site, app, redes ou processo manual.
-            </StepItem>
-            <StepItem num="2" title="Plano" delay={0.08}>
-              Defino o que resolve de verdade, sem vender o que você não precisa.
-            </StepItem>
-            <StepItem num="3" title="Execução" delay={0.16}>
-              Construo a solução e aplico a identidade que representa a sua marca.
-            </StepItem>
-            <StepItem num="4" title="Acompanhamento" delay={0.24}>
-              Ajusto, atualizo e sigo por perto depois que a entrega vai pro ar.
-            </StepItem>
-          </ol>
+          <div className="steps-wrap">
+            <ol className="steps">
+              <StepItem num="1" title="Diagnóstico" delay={0}>
+                Entendo o que trava seu negócio hoje: site, app, redes ou processo manual.
+              </StepItem>
+              <StepItem num="2" title="Plano" delay={0.08}>
+                Defino o que resolve de verdade, sem vender o que você não precisa.
+              </StepItem>
+              <StepItem num="3" title="Execução" delay={0.16}>
+                Construo a solução e aplico a identidade que representa a sua marca.
+              </StepItem>
+              <StepItem num="4" title="Acompanhamento" delay={0.24}>
+                Ajusto, atualizo e sigo por perto depois que a entrega vai pro ar.
+              </StepItem>
+            </ol>
+            <ProcessHub />
+          </div>
         </div>
       </section>
 

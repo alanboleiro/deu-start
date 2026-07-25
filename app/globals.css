@@ -335,19 +335,28 @@ h2 {
 
 .processo { background: var(--off-white); padding: 100px 0; }
 
+.steps-wrap { position: relative; }
+
 .steps {
+  position: relative;
+  z-index: 2;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px 88px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .step {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 20px;
+  padding: 24px 22px;
+  background: var(--white);
+  border-radius: var(--radius);
   border-top: 4px solid var(--red);
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.05);
 }
 
 .step__num {
@@ -359,6 +368,69 @@ h2 {
 
 .step h3 { color: var(--black); font-size: 1.05rem; margin-bottom: 4px; }
 .step p { color: rgba(10, 10, 10, 0.7); font-size: 0.92rem; }
+
+/* Hub — pulso central que respira e manda ondas pros 4 cards */
+
+.hub {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hub__line {
+  position: absolute;
+  background: rgba(228, 40, 60, 0.28);
+}
+.hub__line--h { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+.hub__line--v { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+
+.hub__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--red);
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  animation: hub-pulse 3s ease-out infinite;
+}
+.hub__ring--d1 { animation-delay: 1s; }
+.hub__ring--d2 { animation-delay: 2s; }
+
+.hub__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--white);
+  border: 1px solid rgba(228, 40, 60, 0.18);
+  box-shadow: 0 0 0 6px var(--off-white), 0 8px 20px rgba(10, 10, 10, 0.1);
+  animation: hub-breathe 3s ease-in-out infinite;
+}
+.hub__core-icon { width: 42px; height: auto; }
+
+@keyframes hub-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(4.2); opacity: 0; }
+}
+
+@keyframes hub-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub__ring, .hub__core { animation: none; }
+}
 
 /* Diferenciais */
 
@@ -488,7 +560,7 @@ h2 {
 @media (max-width: 900px) {
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
   .grid--3 { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: repeat(2, 1fr); }
+  .steps { gap: 48px 56px; }
   .footer__inner { grid-template-columns: 1fr 1fr; }
 
   .sobre__inner { grid-template-columns: 1fr; gap: 36px; }
@@ -504,7 +576,8 @@ h2 {
   .nav-mobile { display: block; }
 
   .grid--4 { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .hub { display: none; }
   .footer__inner { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; align-items: center; }
 }
