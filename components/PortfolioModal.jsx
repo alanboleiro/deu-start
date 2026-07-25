@@ -24,7 +24,7 @@ export default function PortfolioModal({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/95 !px-6 !pb-3 !pt-10 backdrop-blur-md md:items-center md:!py-16"
+          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/95 !px-6 !pb-3 !pt-16 backdrop-blur-md md:items-center md:!pb-16 md:!pt-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -42,7 +42,7 @@ export default function PortfolioModal({ open, onClose }) {
             <button
               onClick={onClose}
               aria-label="Fechar portfólio"
-              className="absolute -top-5 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c] md:-top-14"
+              className="absolute -top-2 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c] md:-top-8"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M6 6l12 12M18 6L6 18" />
