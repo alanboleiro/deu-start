@@ -45,7 +45,6 @@ export default function ElegantCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [progress, setProgress] = useState(0);
-  const [paused, setPaused] = useState(false);
   const touchStartX = useRef(0);
 
   const goTo = useCallback((next: number, dir: 1 | -1) => {
@@ -71,8 +70,6 @@ export default function ElegantCarousel() {
   }, []);
 
   useEffect(() => {
-    if (paused) return;
-
     const progressTimer = setInterval(() => {
       setProgress((p) => Math.min(p + 100 / (SLIDE_DURATION / 50), 100));
     }, 50);
@@ -82,7 +79,7 @@ export default function ElegantCarousel() {
       clearInterval(progressTimer);
       clearInterval(slideTimer);
     };
-  }, [index, paused, goNext]);
+  }, [index, goNext]);
 
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
@@ -101,8 +98,6 @@ export default function ElegantCarousel() {
   return (
     <div
       className="relative w-full text-left text-white"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
