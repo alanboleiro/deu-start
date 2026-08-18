@@ -6,8 +6,8 @@ import VaporizeImageCycle from "./ui/vaporize-image-cycle";
 
 const STAGE = { WORD: "word", SYMBOL: "symbol", DONE: "done" };
 
-const ANIMATION = { vaporizeDuration: 1.8, fadeInDuration: 0.9, waitDuration: 0.5 };
-const WORD_TEXTS = ["DEU START"];
+const ANIMATION = { vaporizeDuration: 1, fadeInDuration: 0.5, waitDuration: 0.2 };
+const WORD_TEXTS = ["DEUSTART"];
 const SYMBOL_IMAGES = ["/assets/logo-simbolo-branca.png"];
 
 function getFontFamily(varName, fallback) {
