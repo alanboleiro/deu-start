@@ -27,7 +27,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata = {
-  title: "DeuStart | Tecnologia e marketing digital",
+  title: "DeuStart - Tecnologia e marketing digital",
   description:
     "Sites, apps, gerenciamento de redes sociais e automação de processos pra sua empresa dar um passo à frente.",
 };
