@@ -1,10 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import ElegantCarousel from "./ui/elegant-carousel";
 
 export default function PortfolioModal({ open, onClose }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
     if (!open) return;
 
@@ -20,11 +25,13 @@ export default function PortfolioModal({ open, onClose }) {
     };
   }, [open, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/95 !px-6 !pb-3 !pt-24 backdrop-blur-md md:items-center md:!pb-16 md:!pt-24"
+          className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/98 !px-6 !pb-6 !pt-28 backdrop-blur-xl md:items-center md:!pb-16 md:!pt-28"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -42,7 +49,7 @@ export default function PortfolioModal({ open, onClose }) {
             <button
               onClick={onClose}
               aria-label="Fechar portfólio"
-              className="absolute -top-14 right-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c] md:-top-8"
+              className="absolute right-0 -top-12 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#e4283c] hover:text-[#e4283c]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M6 6l12 12M18 6L6 18" />
@@ -60,6 +67,7 @@ export default function PortfolioModal({ open, onClose }) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

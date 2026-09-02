@@ -1,24 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "./Logo";
+import Magnetic from "./fx/Magnetic";
 
 const links = [
   { href: "/#servicos", label: "Serviços" },
+  { href: "/#portfolio", label: "Portfólio" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/sobre", label: "Sobre" },
-  { href: "/#contato", label: "Contato" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleAnchor = (e, href) => {
+    if (!href.startsWith("/#") || pathname !== "/") return;
+    e.preventDefault();
+    setOpen(false);
+    const el = document.querySelector(href.slice(1));
+    if (!el) return;
+    if (window.__lenis) window.__lenis.scrollTo(el, { offset: -80 });
+    else el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <header className="header">
+    <header className={`header ${stuck ? "is-stuck" : ""}`}>
       <div className="container header__inner">
         <Logo />
 
@@ -27,6 +46,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleAnchor(e, link.href)}
               className={pathname === link.href ? "is-active" : ""}
             >
               {link.label}
@@ -35,14 +55,16 @@ export default function Header() {
         </nav>
 
         <div className="header__actions">
-          <a
-            href="https://wa.me/5571996584561"
-            className="btn btn--accent btn--sm"
-            target="_blank"
-            rel="noopener"
-          >
-            Entrar em Contato
-          </a>
+          <Magnetic strength={0.4}>
+            <a
+              href="https://wa.me/5571996584561"
+              className="btn btn--accent btn--sm"
+              target="_blank"
+              rel="noopener"
+            >
+              Falar com a DeuStart
+            </a>
+          </Magnetic>
 
           <button
             className="nav-toggle"
@@ -50,9 +72,9 @@ export default function Header() {
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 7 : 0 }} />
+            <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6.5 : 0 }} />
             <motion.span animate={{ opacity: open ? 0 : 1 }} />
-            <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }} />
+            <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6.5 : 0 }} />
           </button>
         </div>
       </div>
@@ -71,11 +93,14 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={pathname === link.href ? "is-active" : ""}
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleAnchor(e, link.href)}
               >
                 {link.label}
               </Link>
             ))}
+            <Link href="https://wa.me/5571996584561" onClick={() => setOpen(false)}>
+              Falar com a DeuStart
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>

@@ -5,10 +5,10 @@ export default function Logo({ className = "" }) {
   return (
     <Link href="/" className={`logo ${className}`}>
       <Image
-        src="/assets/logo-simbolo-branca.png"
+        src="/assets/simbolo-branco.png"
         alt="DeuStart"
-        width={748}
-        height={512}
+        width={680}
+        height={445}
         className="logo__icon"
         priority
       />

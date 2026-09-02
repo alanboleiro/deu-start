@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FxLayer from "@/components/fx/FxLayer";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata = {
-  title: "DeuStart - Tecnologia e marketing digital",
+  title: "DeuStart | Tecnologia e marketing digital",
   description:
     "Sites, apps, gerenciamento de redes sociais e automação de processos pra sua empresa dar um passo à frente.",
 };
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-CDNQDC113X');
           `}
         </Script>
+        <FxLayer />
         <Header />
         <main>{children}</main>
         <Footer />

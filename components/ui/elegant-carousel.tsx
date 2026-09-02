@@ -33,7 +33,7 @@ const slides: PortfolioSlide[] = [
   },
   {
     title: "Encanto das Flores",
-    subtitle: "E-commerce de floricultura",
+    subtitle: "Loja online de floricultura",
     description:
       "E-commerce de floricultura em Porto Alegre, ativo desde 2020, com catálogo de 19 produtos divididos em Flores, Plantas, Vasos e Buquês.",
     imageUrl: "/assets/projeto3.png",
