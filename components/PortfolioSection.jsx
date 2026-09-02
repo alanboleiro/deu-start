@@ -32,7 +32,7 @@ const PROJECTS = [
     n: "04",
     title: "JorgeTI",
     tag: "Manutenção de computadores e notebooks",
-    desc: "Site refeito do zero para um técnico de Salvador, com atendimento presencial na cidade e remoto para todo o Brasil.",
+    desc: "Site refeito do zero para um técnico de manutenção de computadores em Salvador. Atende presencialmente na cidade e de forma remota em todo o Brasil.",
     img: "/assets/projeto4.png",
     url: "https://jorgeti.vercel.app/",
   },

@@ -43,7 +43,7 @@ const slides: PortfolioSlide[] = [
     title: "JorgeTI",
     subtitle: "Manutenção de computadores e notebooks",
     description:
-      "Site refeito do zero para um técnico de Salvador/BA, com foto real da bancada, serviços claros e contato direto. Atendimento presencial na cidade e remoto para todo o Brasil.",
+      "Site refeito do zero para um técnico de manutenção de computadores em Salvador. Atende presencialmente na cidade e de forma remota em todo o Brasil.",
     imageUrl: "/assets/projeto4.png",
     siteUrl: "https://jorgeti.vercel.app/",
   },
@@ -180,7 +180,7 @@ export default function ElegantCarousel() {
               >
                 {slide.subtitle}
               </p>
-              <p className="!mb-3 max-w-md leading-relaxed text-white/70 md:!mb-12">{slide.description}</p>
+              <p className="!mb-3 line-clamp-4 max-w-md leading-relaxed text-white/70 md:!mb-12">{slide.description}</p>
 
               <a
                 href={slide.siteUrl}
