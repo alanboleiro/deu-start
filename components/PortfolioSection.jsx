@@ -28,6 +28,14 @@ const PROJECTS = [
     img: "/assets/projeto3.png",
     url: "https://encanto-das-flores.vercel.app/",
   },
+  {
+    n: "04",
+    title: "JorgeTI",
+    tag: "Manutenção de computadores e notebooks",
+    desc: "Site refeito do zero para um técnico de Salvador, com atendimento presencial na cidade e remoto para todo o Brasil.",
+    img: "/assets/projeto4.png",
+    url: "https://jorgeti.vercel.app/",
+  },
 ];
 
 export default function PortfolioSection() {

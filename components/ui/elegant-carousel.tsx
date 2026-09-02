@@ -39,6 +39,14 @@ const slides: PortfolioSlide[] = [
     imageUrl: "/assets/projeto3.png",
     siteUrl: "https://encanto-das-flores.vercel.app/",
   },
+  {
+    title: "JorgeTI",
+    subtitle: "Manutenção de computadores e notebooks",
+    description:
+      "Site refeito do zero para um técnico de Salvador/BA, com foto real da bancada, serviços claros e contato direto. Atendimento presencial na cidade e remoto para todo o Brasil.",
+    imageUrl: "/assets/projeto4.png",
+    siteUrl: "https://jorgeti.vercel.app/",
+  },
 ];
 
 export default function ElegantCarousel() {
