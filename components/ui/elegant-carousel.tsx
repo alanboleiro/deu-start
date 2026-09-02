@@ -161,7 +161,7 @@ export default function ElegantCarousel() {
         </div>
 
         {/* Texto */}
-        <div className="order-2 md:order-1">
+        <div className="order-2 min-h-[19rem] md:order-1 md:min-h-0">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -170,14 +170,16 @@ export default function ElegantCarousel() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h3 className="!mb-1 text-2xl font-bold text-white md:!mb-5 md:text-4xl">{slide.title}</h3>
+              <h3 className="!mb-1 min-h-[4rem] text-2xl font-bold text-white md:!mb-5 md:min-h-0 md:text-4xl">
+                {slide.title}
+              </h3>
               <p
-                className="!mb-2 min-h-[2.75rem] text-sm font-semibold uppercase tracking-wide md:!mb-8 md:min-h-0"
+                className="!mb-2 min-h-[3.5rem] text-sm font-semibold uppercase tracking-wide md:!mb-8 md:min-h-0"
                 style={{ color: ACCENT }}
               >
                 {slide.subtitle}
               </p>
-              <p className="!mb-3 line-clamp-4 min-h-[5.7rem] max-w-md leading-relaxed text-white/70 md:!mb-12 md:min-h-0">
+              <p className="!mb-3 line-clamp-4 min-h-[6.75rem] max-w-md leading-relaxed text-white/70 md:!mb-12 md:min-h-0">
                 {slide.description}
               </p>
 
