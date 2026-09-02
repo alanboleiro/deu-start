@@ -11,6 +11,7 @@ const SHOTS = [
   { src: "/assets/projeto1-novo.png", label: "Instituto Saúde" },
   { src: "/assets/projeto2.png", label: "CM Life" },
   { src: "/assets/projeto3.png", label: "Encanto das Flores" },
+  { src: "/assets/projeto4.png", label: "JorgeTI" },
 ];
 
 export default function Hero() {
