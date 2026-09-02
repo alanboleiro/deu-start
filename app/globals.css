@@ -505,12 +505,13 @@ a { color: inherit; text-decoration: none; }
   .pf__row:hover .pf__go { color: var(--red); }
 }
 .pf__num { font-family: var(--font-head); font-size: 1.5rem; color: var(--muted-dim); }
-.pf__meta h3 { color: var(--white); font-size: 1.35rem; margin-bottom: 6px; }
+.pf__meta h3 { color: var(--white); font-size: 1.35rem; margin-bottom: 16px; }
 .pf__meta span { color: var(--red); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.pf__meta > span:first-child { display: block; margin-bottom: 16px; }
 .pf__meta p {
   color: var(--muted);
   font-size: 0.9rem;
-  margin-top: 10px;
+  margin-top: 0;
   max-width: 44ch;
   display: -webkit-box;
   -webkit-box-orient: vertical;

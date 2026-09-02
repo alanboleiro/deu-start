@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,6 +18,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
   const pathname = usePathname();
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 12);
@@ -26,10 +27,26 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   const handleAnchor = (e, href) => {
+    setOpen(false);
     if (!href.startsWith("/#") || pathname !== "/") return;
     e.preventDefault();
-    setOpen(false);
     const el = document.querySelector(href.slice(1));
     if (!el) return;
     if (window.__lenis) window.__lenis.scrollTo(el, { offset: -80 });
@@ -37,7 +54,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${stuck ? "is-stuck" : ""}`}>
+    <header ref={headerRef} className={`header ${stuck ? "is-stuck" : ""}`}>
       <div className="container header__inner">
         <Logo />
 

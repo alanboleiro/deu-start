@@ -43,7 +43,7 @@ const slides: PortfolioSlide[] = [
     title: "JorgeTI",
     subtitle: "Manutenção de computadores e notebooks",
     description:
-      "Site refeito do zero para um técnico de manutenção de computadores em Salvador. Atende presencialmente na cidade e de forma remota em todo o Brasil.",
+      "Site refeito do zero para um técnico de manutenção de computadores em Salvador/BA.",
     imageUrl: "/assets/projeto4.png",
     siteUrl: "https://jorgeti.vercel.app/",
   },
