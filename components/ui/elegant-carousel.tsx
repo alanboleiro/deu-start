@@ -170,17 +170,16 @@ export default function ElegantCarousel() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="!mb-1 text-xs font-semibold tracking-widest text-white/50 md:!mb-7">
-                {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-              </div>
               <h3 className="!mb-1 text-2xl font-bold text-white md:!mb-5 md:text-4xl">{slide.title}</h3>
               <p
-                className="!mb-2 text-sm font-semibold uppercase tracking-wide md:!mb-8"
+                className="!mb-2 min-h-[2.75rem] text-sm font-semibold uppercase tracking-wide md:!mb-8 md:min-h-0"
                 style={{ color: ACCENT }}
               >
                 {slide.subtitle}
               </p>
-              <p className="!mb-3 line-clamp-4 max-w-md leading-relaxed text-white/70 md:!mb-12">{slide.description}</p>
+              <p className="!mb-3 line-clamp-4 min-h-[5.7rem] max-w-md leading-relaxed text-white/70 md:!mb-12 md:min-h-0">
+                {slide.description}
+              </p>
 
               <a
                 href={slide.siteUrl}
